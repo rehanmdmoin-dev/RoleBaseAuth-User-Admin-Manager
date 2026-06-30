@@ -1,0 +1,84 @@
+.manager-dashboard-page {
+  background: linear-gradient(135deg, #f8fafc 0%, #ecfeff 45%, #fef3c7 100%);
+  min-height: 100vh;
+}
+
+.manager-dashboard-page #content-wrapper {
+  background: transparent;
+}
+
+.manager-dashboard-page .topbar {
+  background: linear-gradient(90deg, #ffffff 0%, #fdf2f8 100%) !important;
+  border-bottom: 2px solid #f59e0b;
+}
+
+.manager-dashboard-page .sidebar {
+  background: linear-gradient(135deg, #0f766e 0%, #2563eb 55%, #7c3aed 100%) !important;
+}
+
+.manager-dashboard-page .sidebar .sidebar-brand-text,
+.manager-dashboard-page .sidebar .nav-link,
+.manager-dashboard-page .sidebar .sidebar-heading {
+  color: #f8fafc !important;
+}
+
+.manager-dashboard-page .sidebar .nav-item.active > .nav-link {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 0.5rem;
+}
+
+.manager-dashboard-page .page-title-bar {
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 55%, #8b5cf6 100%);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+}
+
+.manager-dashboard-page .page-title-bar h1 {
+  color: #fff;
+  font-weight: 700;
+}
+
+.manager-dashboard-page .page-title-bar .btn-primary {
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.manager-dashboard-page .card {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.manager-dashboard-page .card-header {
+  background: linear-gradient(90deg, #fef3c7 0%, #ecfeff 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.manager-dashboard-page .border-left-primary {
+  border-left: 6px solid #0f766e !important;
+}
+
+.manager-dashboard-page .border-left-success {
+  border-left: 6px solid #10b981 !important;
+}
+
+.manager-dashboard-page .border-left-info {
+  border-left: 6px solid #3b82f6 !important;
+}
+
+.manager-dashboard-page .border-left-warning {
+  border-left: 6px solid #f59e0b !important;
+}
+
+.manager-dashboard-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at top left, rgba(20, 184, 166, 0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.16), transparent 30%);
+  pointer-events: none;
+  z-index: -1;
+}
