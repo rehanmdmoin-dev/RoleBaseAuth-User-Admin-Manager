@@ -1,14 +1,14 @@
-const jwt=require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-const AdminAuthCheck=(req,res,next)=>{
+const AdminAuthCheck = (req, res, next) => {
 
-    if(req.cookies && req.cookies.admintoken){
+    if (req.cookies && req.cookies.admintoken) {
 
-        const token=req.cookies.admintoken
-        const decoded=jwt.verify(token,process.env.ADMIN_JWT_SECRET)
-        req.admin=decoded
-       return next()
-    }else{
+        const token = req.cookies.admintoken
+        const decoded = jwt.verify(token, process.env.ADMIN_JWT_SECRET)
+        req.admin = decoded
+        return next()
+    } else {
         console.log('not logged in please login first');
         res.redirect('/admin/login')
     }
@@ -17,4 +17,4 @@ const AdminAuthCheck=(req,res,next)=>{
 
 
 
-module.exports=AdminAuthCheck
+module.exports = AdminAuthCheck

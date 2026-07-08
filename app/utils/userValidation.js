@@ -1,38 +1,51 @@
 const Joi = require("joi");
 
 const userValidation = Joi.object({
-  name: Joi.string()
-    .min(3)
-    .required(),
+  name: Joi.string().trim().min(2).max(50).required().messages({
+    "string.empty": "Name is required",
+    "string.min": "Name must be at least 2 characters",
+    "any.required": "Name is required",
+  }),
 
-  username: Joi.string()
-    .min(5)
-    .required(),
+  email: Joi.string().trim().email().required().messages({
+    "string.empty": "Email is required",
+    "string.email": "Please enter a valid email",
+    "any.required": "Email is required",
+  }),
 
-  email: Joi.string()
-    .email()
-    .required(),
+  phone: Joi.string().trim().pattern(/^[0-9]{10,15}$/).required().messages({
+    "string.empty": "Phone number is required",
+    "string.pattern.base": "Phone number must contain only 10 to 15 digits",
+    "any.required": "Phone number is required",
+  }),
 
-  address: Joi.object({
-    street: Joi.string().required(),
-    suite: Joi.string().required(),
-    city: Joi.string().required(),
-    zipcode: Joi.string().required(),
-    geo: Joi.object({
-      lat: Joi.string().required(),
-      lng: Joi.string().required()
-    }).required()
-  }).required(),
+  password: Joi.string().trim().min(6).max(128).required().messages({
+    "string.empty": "Password is required",
+    "string.min": "Password must be at least 6 characters",
+    "any.required": "Password is required",
+  }),
 
-  phone: Joi.string().required(),
+  role: Joi.string().valid("user", "admin").optional(),
+  isVerified: Joi.boolean().optional(),
+}).options({ abortEarly: false });
 
-  website: Joi.string().required(),
+const loginValidation = Joi.object({
+  email: Joi.string().trim().email().required(),
+  password: Joi.string().trim().min(6).required(),
+}).options({ abortEarly: false });
 
-  company: Joi.object({
-    name: Joi.string().required(),
-    catchPhrase: Joi.string().required(),
-    bs: Joi.string().required()
-  }).required()
-});
+const updateProfileValidation = Joi.object({
+  name: Joi.string().trim().min(2).max(50).required(),
+  email: Joi.string().trim().email().required(),
+  phone: Joi.string().trim().pattern(/^[0-9]{10,15}$/).required(),
+}).options({ abortEarly: false });
+
+const assignRoleValidation = Joi.object({
+  userId: Joi.string().required(),
+  role: Joi.string().valid("user", "admin").required(),
+}).options({ abortEarly: false });
 
 module.exports = userValidation;
+module.exports.loginValidation = loginValidation;
+module.exports.updateProfileValidation = updateProfileValidation;
+module.exports.assignRoleValidation = assignRoleValidation;
